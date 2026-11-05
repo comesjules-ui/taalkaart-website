@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voor cursisten · Taalkaart</title>
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="kop"><div class="wrap">
+  <a class="merk" href="./"><img src="img/logo.png" alt=""><b>Taalkaart</b></a>
+  <nav><a href="cursisten.html" aria-current="page">Cursisten</a><a href="centra.html">Centra</a><a class="wegklein" href="hulp.html">Hulp</a><a class="wegklein" href="privacy.html">Privacy</a></nav>
+</div></header>
+
+<main>
+<section class="held"><div class="wrap duo">
+  <div>
+    <span class="label">Voor cursisten</span>
+    <h1>Hoe werkt Taalkaart?</h1>
+    <p class="lead">Kijk naar de video. Kies je taal.</p>
+    <div class="talen" role="group" aria-label="Taal van de video">
+      <button data-taal="nl" aria-pressed="true">Nederlands</button>
+      <button data-taal="en" aria-pressed="false">English</button>
+      <button data-taal="fr" aria-pressed="false">Français</button>
+    </div>
+  </div>
+  <video id="video" class="tel video" controls playsinline preload="metadata" poster="video/instructie-poster.jpg" width="720" height="1280">
+    <source src="video/instructie-nl.mp4" type="video/mp4">
+  </video>
+</div></section>
+
+<section class="licht"><div class="wrap">
+  <h2>In het kort</h2>
+  <div class="stappen">
+    <div class="stap"><b>Kies</b><p>A1, de standaardtest of extra oefenen. Kies een thema en een stap.</p></div>
+    <div class="stap"><b>Luister</b><p>Gesprekken met Vlaamse stemmen, normaal en traag.</p></div>
+    <div class="stap"><b>Oefen</b><p>Schrijf, kies en bouw zinnen. Je ziet meteen of het goed is.</p></div>
+    <div class="stap"><b>Jij</b><p>Schrijf over jezelf. Een fictief antwoord mag altijd.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Elke dag 10 minuten.</h2>
+  <ul class="vink">
+    <li>Alles in het Nederlands, met beelden.</li>
+    <li>Geen account. Je voortgang blijft op je gsm.</li>
+    <li>Werkt zonder internet. Alleen voor spreken heb je internet nodig.</li>
+    <li>Vragen? Vraag het aan je leerkracht.</li>
+  </ul>
+  <p class="status" style="margin-top:24px">Taalkaart is in testfase. Je krijgt de app via je leerkracht.</p>
+  <!-- LATER (commercieel): links naar de App Store en Google Play.
+  <div class="winkels">
+    <a href="#">Download in de App Store</a>
+    <a href="#">Ontdek het op Google Play</a>
+  </div>
+  -->
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Jules Comes · Taalkaart</span>
+  <nav><a href="hulp.html">Hulp</a><a href="privacy.html">Privacy</a><a href="mailto:info@taalkaart.be">info@taalkaart.be</a></nav>
+</div></footer>
+<script>
+  const v = document.getElementById('video');
+  document.querySelectorAll('.talen button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.talen button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    v.src = 'video/instructie-' + b.dataset.taal + '.mp4';
+    v.play().catch(() => {});
+  }));
+</script>
+</body>
+</html>
