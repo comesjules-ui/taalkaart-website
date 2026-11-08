@@ -103,7 +103,6 @@ footer nav{display:flex;gap:16px}
 .groep .pijl{font-weight:700;color:var(--oranje)}
 .groep.donker{background:#1F2A44;color:#fff;border-color:#1F2A44}
 .groep.donker p{color:#C9CFDD}
-.groep:hover{transform:translateY(-2px);transition:transform .15s}
 .talen{display:flex;gap:8px;flex-wrap:wrap}
 .talen button{font:inherit;font-weight:700;font-size:15px;border-radius:999px;padding:9px 16px;border:2px solid var(--lijn);background:var(--kaart);color:var(--inkt);cursor:pointer}
 .talen button[aria-pressed="true"]{border-color:var(--oranje);color:var(--oranje)}
@@ -113,3 +112,24 @@ video.breed{width:100%;height:auto;border-radius:18px;margin-top:8px;background:
 @media (max-width:820px){.keuze{grid-template-columns:1fr}}
 .held .wrap.enkel{display:block}
 .held .wrap.enkel video.breed{max-width:860px}
+
+/* ---- Beweging (volgens de regels van taste-skill, ingetogen) ---- */
+:focus-visible{outline:3px solid var(--oranje);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion: no-preference){
+  /* de kop van elke pagina komt één keer rustig in beeld */
+  .held .wrap>*{animation:op .5s cubic-bezier(.2,.7,.2,1) both}
+  .held .wrap>*:nth-child(2){animation-delay:.08s}
+  @keyframes op{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+@media (hover:hover) and (pointer:fine){
+  .knop,.talen button{transition:transform .15s ease,filter .15s ease,background-color .15s ease}
+  .knop:hover{transform:translateY(-1px);filter:brightness(.93)}
+  .knop:active{transform:translateY(1px) scale(.985);transition-duration:.09s}
+  .talen button:hover{border-color:var(--zacht)}
+  .groep{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .groep:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,42,68,.10);border-color:var(--zacht)}
+  .groep:active{transform:translateY(0) scale(.99)}
+  .groep .pijl{transition:letter-spacing .15s ease}
+  .groep:hover .pijl{text-decoration:underline;text-underline-offset:4px}
+  .kop nav a,footer a{transition:color .15s ease}
+}
