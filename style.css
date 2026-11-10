@@ -103,7 +103,7 @@ footer nav{display:flex;gap:16px}
 .groep .pijl{font-weight:700;color:var(--oranje)}
 .groep.donker{background:#1F2A44;color:#fff;border-color:#1F2A44}
 .groep.donker p{color:#C9CFDD}
-.talen{display:flex;gap:8px;flex-wrap:wrap}
+.talen{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .talen button{font:inherit;font-weight:700;font-size:15px;border-radius:999px;padding:9px 16px;border:2px solid var(--lijn);background:var(--kaart);color:var(--inkt);cursor:pointer}
 .talen button[aria-pressed="true"]{border-color:var(--oranje);color:var(--oranje)}
 video.video{max-width:300px;width:100%;height:auto;background:#000}
@@ -134,6 +134,3 @@ video.breed{width:100%;height:auto;border-radius:18px;margin-top:8px;background:
   .kop nav a,footer a{transition:color .15s ease}
 }
 
-/* vlaggetjes bij de taalknoppen (cursisten) */
-.talen button{display:inline-flex;align-items:center}
-.vlag{flex:none;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
