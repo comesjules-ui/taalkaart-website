@@ -133,3 +133,7 @@ video.breed{width:100%;height:auto;border-radius:18px;margin-top:8px;background:
   .groep:hover .pijl{text-decoration:underline;text-underline-offset:4px}
   .kop nav a,footer a{transition:color .15s ease}
 }
+
+/* vlaggetjes bij de taalknoppen (cursisten) */
+.talen button{display:inline-flex;align-items:center;gap:8px}
+.vlag{flex:none;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
