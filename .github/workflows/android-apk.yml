@@ -1,0 +1,38 @@
+# Zet het Android-testbestand (APK) blijvend online (12/11/2026).
+# Expo bewaart een APK maar ± 13 dagen. Deze workflow haalt het bestand bij Expo op en zet het in een
+# GitHub-release van deze (openbare) repo. Vaste downloadlink, ook na een nieuwe versie:
+#   https://github.com/comesjules-ui/taalkaart-website/releases/latest/download/taalkaart-test.apk
+# Starten: Actions > "Android-bestand online zetten" > Run workflow, met de Expo-link van het .apk-bestand.
+name: Android-bestand online zetten
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Expo-link van het .apk-bestand (https://expo.dev/artifacts/eas/....apk)"
+        required: true
+      versie:
+        description: "Naam van de versie (bv. build-17)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: APK downloaden
+        run: |
+          curl -fsSL -o taalkaart-test.apk "${{ inputs.url }}"
+          ls -l taalkaart-test.apk
+          test "$(head -c 2 taalkaart-test.apk)" = "PK"
+      - name: Release maken
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "android-${{ inputs.versie }}" taalkaart-test.apk \
+            --repo "${{ github.repository }}" --latest \
+            --title "Taalkaart Android ${{ inputs.versie }}" \
+            --notes "Testversie voor Android. Vaste link: https://github.com/${{ github.repository }}/releases/latest/download/taalkaart-test.apk"
