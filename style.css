@@ -90,6 +90,9 @@ footer nav{display:flex;gap:16px}
   .kop nav a.wegklein{display:none}
 }
 @media (max-width:520px){
+  .kop nav{gap:12px;font-size:14px}
+  .merk b{font-size:18px}
+  .merk img{width:36px;height:36px}
   .raster,.stappen{grid-template-columns:1fr}
   .centra{padding:26px}
   .tel{border-width:6px;border-radius:24px}
@@ -134,3 +137,4 @@ video.breed{width:100%;height:auto;border-radius:18px;margin-top:8px;background:
   .kop nav a,footer a{transition:color .15s ease}
 }
 
+@media (max-width:400px){.merk b{display:none}}
