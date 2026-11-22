@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taalkaart: je klas</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF8F3">
+<link rel="icon" href="../favicon.png">
+<link rel="stylesheet" href="../style.css?v=5">
+</head>
+<body>
+<header class="kop"><div class="wrap">
+  <a class="merk" href="../"><img src="../img/logo.png" alt=""><b>Taalkaart</b></a>
+</div></header>
+<main><div class="wrap" style="max-width:640px">
+  <p class="label" id="klas" style="margin-top:18px"></p>
+  <h1 style="margin:.3em 0 .2em">Taalkaart</h1>
+  <p class="lead">Heb je een iPhone of een Android? · iPhone ou Android ? · iPhone or Android?</p>
+  <p style="margin:22px 0;display:flex;gap:12px;flex-wrap:wrap"><a class="knop" id="ios" href="iphone.html">iPhone</a><a class="knop" id="and" href="android.html">Android</a></p>
+</div></main>
+<script>
+var n=(new URLSearchParams(location.search).get('k')||'').replace(/[^\p{L}\p{N} -]/gu,'').trim().slice(0,30);
+if(n){document.getElementById('klas').textContent='Klas van '+n;
+  ['ios','and'].forEach(function(id){var a=document.getElementById(id);a.href=a.getAttribute('href')+'?klas='+encodeURIComponent(n);});}
+// meteen naar de juiste pagina
+var ua=navigator.userAgent;
+if(/Android/i.test(ua)) location.replace(document.getElementById('and').href);
+else if(/iPhone|iPad|iPod/i.test(ua)) location.replace(document.getElementById('ios').href);
+</script>
+</body>
+</html>
