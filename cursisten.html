@@ -77,7 +77,7 @@
   const v = document.getElementById('video');
   document.querySelectorAll('.talen button').forEach(b => b.addEventListener('click', () => {
     document.querySelectorAll('.talen button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    v.src = 'video/instructie-' + b.dataset.taal + '.mp4';
+    v.src = 'video/instructie-' + b.dataset.taal + '.mp4?v=7';
     v.play().catch(() => {});
   }));
 </script>
